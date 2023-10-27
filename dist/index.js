@@ -29881,7 +29881,7 @@ async function run() {
     const octokit = github.getOctokit(token)
 
     const response = await octokit.request(
-      'GET /repos/tuckerweibell/security-badge-action/dependabot/alerts',
+      'GET /repos/tuckerweibell/juice-shop/dependabot/alerts',
       {
         owner,
         repo,
