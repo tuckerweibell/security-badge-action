@@ -29874,6 +29874,10 @@ async function run() {
     const owner = github.context.repo.owner
     const repo = github.context.repo
 
+    core.debug('token')
+    core.debug('owner')
+    core.debug('repo')
+
     const octokit = github.getOctokit(token)
 
     const response = await octokit.request(
@@ -29886,6 +29890,8 @@ async function run() {
         }
       }
     )
+
+    core.debug(`GET /repos/${owner}/${repo}/dependabot/alerts`)
 
     core.setOutput('dependabot-alert-count', response.data.length)
   } catch (error) {
