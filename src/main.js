@@ -17,7 +17,7 @@ async function run() {
         ...context.repo
       }
     )
-    core.setOutput('dependabot-alert-count', dependabot.data.length)
+    core.setOutput('dependabot-alert-count', dependabot.length)
 
     const codeql = await octokit.paginate(
       octokit.rest.codeScanning.listAlertsForRepo,
@@ -26,8 +26,7 @@ async function run() {
         ...context.repo
       }
     )
-
-    core.setOutput('code-scanning-alert-count', codeql.data.length)
+    core.setOutput('code-scanning-alert-count', codeql.length)
   } catch (error) {
     core.setFailed(error.message)
   }
