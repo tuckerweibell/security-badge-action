@@ -8,10 +8,14 @@ const github = require('@actions/github')
 async function run() {
   try {
     const token = core.getInput('token')
+    const context = github.context
 
     const octokit = github.getOctokit(token)
 
-    const response = await octokit.rest.dependabot.listAlertsForRepo()
+    const response = await octokit.rest.dependabot.listAlertsForRepo({
+      ...context.repo.owner,
+      ...context.repo
+    })
 
     core.setOutput('dependabot-alert-count', response.data.length)
   } catch (error) {
