@@ -7,17 +7,17 @@ const github = require('@actions/github')
  */
 async function run() {
   try {
-    const TOKEN = core.getInput('token')
-    const OWNER = github.context.repo.owner
-    const REPO = github.context.repo
+    const token = core.getInput('token')
+    const owner = github.context.repo.owner
+    const repo = github.context.repo
 
-    const octokit = github.getOctokit(TOKEN)
+    const octokit = github.getOctokit(token)
 
     const response = await octokit.request(
-      'GET /repos/${owner}/{repo}/dependabot/alerts',
+      'GET /repos/{owner}/{repo}/dependabot/alerts',
       {
-        owner: OWNER,
-        repo: REPO,
+        owner,
+        repo,
         headers: {
           'X-GitHub-Api-Version': '2022-11-28'
         }
