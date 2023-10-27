@@ -8,27 +8,10 @@ const github = require('@actions/github')
 async function run() {
   try {
     const token = core.getInput('token')
-    const owner = github.context.repo.owner
-    const repo = github.context.repo
-
-    core.debug('token')
-    core.debug('owner')
-    core.debug('repo')
 
     const octokit = github.getOctokit(token)
 
-    const response = await octokit.request(
-      'GET /repos/tuckerweibell/juice-shop/dependabot/alerts',
-      {
-        owner,
-        repo,
-        headers: {
-          'X-GitHub-Api-Version': '2022-11-28'
-        }
-      }
-    )
-
-    core.debug(`GET /repos/${owner}/${repo}/dependabot/alerts`)
+    const response = await octokit.rest.dependabot.listAlertsForRepo()
 
     core.setOutput('dependabot-alert-count', response.data.length)
   } catch (error) {
