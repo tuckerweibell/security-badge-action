@@ -12,6 +12,8 @@ inputs:
 outputs:
   dependabot-alert-count:
     description: 'Number of dependabot alerts'
+  code-scanning-alert-count:
+    description: 'Number of code scanning alerts'
 
 runs:
   using: node20

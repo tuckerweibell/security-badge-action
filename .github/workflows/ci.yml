@@ -51,6 +51,10 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
-      - name: Print Output
+      - name: Print Dependabot Count
         id: output
         run: echo "${{ steps.test-action.outputs.dependabot-alert-count }}"
+
+      - name: Print Code Scanning Count
+        id: output
+        run: echo "${{ steps.test-action.outputs.code-scanning-alert-count }}"
