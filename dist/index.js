@@ -29890,6 +29890,15 @@ async function run() {
       }
     )
     core.setOutput('code-scanning-alert-count', codeql.length)
+
+    const secrets = await octokit.paginate(
+      octokit.rest.secretScanning.listAlertsForRepo,
+      {
+        ...context.repo.owner,
+        ...context.repo
+      }
+    )
+    core.setOutput('secret-scanning-alert-count', secrets.length)
   } catch (error) {
     core.setFailed(error.message)
   }

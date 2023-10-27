@@ -58,3 +58,7 @@ jobs:
       - name: Print Code Scanning Count
         id: output2
         run: echo "${{ steps.test-action.outputs.code-scanning-alert-count }}"
+
+      - name: Print Secret Scanning Count
+        id: output3
+        run: echo "${{ steps.test-action.outputs.secret-scanning-alert-count }}"

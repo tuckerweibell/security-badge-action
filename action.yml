@@ -7,6 +7,18 @@ inputs:
   token:
     description: 'Github API token'
     required: true
+  dependabot-badge-disable:
+    description: 'Boolean to enable or disable dependabot badge'
+    required: false
+    default: false
+  code-scanning-badge-disable:
+    description: 'Boolean to enable or disable code scanning badge'
+    required: false
+    default: false
+  secret-scanning-badge-disable:
+    description: 'Boolean to enable or disable secret scanning badge'
+    required: false
+    default: false
 
 # Define your outputs here.
 outputs:
@@ -14,6 +26,9 @@ outputs:
     description: 'Number of dependabot alerts'
   code-scanning-alert-count:
     description: 'Number of code scanning alerts'
+  secret-scanning-alert-count:
+    description: 'Number of secret scanning alerts'
+
 
 runs:
   using: node20
