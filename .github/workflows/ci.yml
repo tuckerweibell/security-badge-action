@@ -53,7 +53,7 @@ jobs:
         id: test-action
         uses: ./
         with:
-          token: ${{ secrets.GITHUH_PAT_TOKEN}}
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Print Output
         id: output
