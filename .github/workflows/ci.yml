@@ -56,5 +56,5 @@ jobs:
         run: echo "${{ steps.test-action.outputs.dependabot-alert-count }}"
 
       - name: Print Code Scanning Count
-        id: output
+        id: output2
         run: echo "${{ steps.test-action.outputs.code-scanning-alert-count }}"
