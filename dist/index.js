@@ -29912,7 +29912,7 @@ async function run() {
     const dependabotScale =
       (dependabot.length - dependabotMinimum) /
       (dependabotMaximum - dependabotMinimum)
-    const dependabotColor = chroma.scale(dependabotScale).hex().replace('#', '')
+    const dependabotColor = color_scale(dependabotScale).hex().replace('#', '')
     const dependabotUrl = `https://flat.badgen.net/badge/${dependabotBadgeName}/${dependabot.length}/${dependabotColor}`
     core.setOutput('dependabot-svg-url', dependabotUrl)
   } catch (error) {
