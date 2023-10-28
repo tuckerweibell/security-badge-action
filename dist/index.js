@@ -29871,7 +29871,7 @@ const chroma = __nccwpck_require__(6437)
  */
 async function run() {
   try {
-    const color_scale = chroma.scale(['green', 'red'])
+    const color_scale = chroma.scale(['#00e604', 'yellow', 'red'])
     const token = core.getInput('token')
     const dependabotMinimum = core.getInput('dependabot-minimum')
     const dependabotMaximum = core.getInput('dependabot-maximum')
@@ -29914,6 +29914,7 @@ async function run() {
       (dependabotMaximum - dependabotMinimum)
     const dependabotColor = color_scale(dependabotScale).hex().replace('#', '')
     const dependabotUrl = `https://flat.badgen.net/badge/${dependabotBadgeName}/${dependabot.length}/${dependabotColor}`
+
     core.setOutput('dependabot-svg-url', dependabotUrl)
   } catch (error) {
     core.setFailed(error.message)
