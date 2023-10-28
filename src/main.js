@@ -8,7 +8,7 @@ const chroma = require('chroma-js')
  */
 async function run() {
   try {
-    const color_scale = chroma.scale(['green', 'red'])
+    const color_scale = chroma.scale(['green', 'yellow', 'red'])
     const token = core.getInput('token')
     const dependabotMinimum = core.getInput('dependabot-minimum')
     const dependabotMaximum = core.getInput('dependabot-maximum')
@@ -51,6 +51,7 @@ async function run() {
       (dependabotMaximum - dependabotMinimum)
     const dependabotColor = color_scale(dependabotScale).hex().replace('#', '')
     const dependabotUrl = `https://flat.badgen.net/badge/${dependabotBadgeName}/${dependabot.length}/${dependabotColor}`
+    
     core.setOutput('dependabot-svg-url', dependabotUrl)
   } catch (error) {
     core.setFailed(error.message)
