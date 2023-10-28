@@ -7,6 +7,18 @@ inputs:
   token:
     description: 'Github API token'
     required: true
+  dependabot-minimum:
+    description: 'Minimum allowed dependabot alerts'
+    required: false
+    default: 0
+  dependabot-maximum:
+    description: 'Maximum allowed dependabot alerts'
+    required: false
+    default: 0
+  dependabot-badge-name:
+    description: 'Maximum allowed dependabot alerts'
+    required: false
+    default: 0
 
 # Define your outputs here.
 outputs:
@@ -16,6 +28,9 @@ outputs:
     description: 'Number of code scanning alerts'
   secret-scanning-alert-count:
     description: 'Number of secret scanning alerts'
+  dependabot-svg-url:
+    description: 'Url badge generated for dependabot'
+
 
 
 runs:

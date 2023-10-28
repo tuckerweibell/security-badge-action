@@ -1,5 +1,6 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
+const chroma = require('chroma-js')
 
 /**
  * The main function for the action.
@@ -7,7 +8,12 @@ const github = require('@actions/github')
  */
 async function run() {
   try {
+    const color_scale = chroma.scale(['green', 'red'])
     const token = core.getInput('token')
+    const dependabotMinimum = core.getInput('dependabot-minimum')
+    const dependabotMaximum = core.getInput('dependabot-maximum')
+    const dependabotBadgeName = core.getInput('dependabot-badge-name')
+
     const context = github.context
     const octokit = github.getOctokit(token)
     const dependabot = await octokit.paginate(
@@ -39,6 +45,13 @@ async function run() {
       }
     )
     core.setOutput('secret-scanning-alert-count', secrets.length)
+
+    const dependabotScale =
+      (dependabot.length - dependabotMinimum) /
+      (dependabotMaximum - dependabotMinimum)
+    const dependabotColor = chroma.scale(dependabotScale).hex().replace('#', '')
+    const dependabotUrl = `https://flat.badgen.net/badge/${dependabotBadgeName}/${dependabot.length}/${dependabotColor}`
+    core.setOutput('dependabot-svg-url', dependabotUrl)
   } catch (error) {
     core.setFailed(error.message)
   }
