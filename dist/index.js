@@ -29877,7 +29877,8 @@ async function run() {
       octokit.rest.dependabot.listAlertsForRepo,
       {
         ...context.repo.owner,
-        ...context.repo
+        ...context.repo,
+        state: 'open'
       }
     )
     core.setOutput('dependabot-alert-count', dependabot.length)
@@ -29886,7 +29887,8 @@ async function run() {
       octokit.rest.codeScanning.listAlertsForRepo,
       {
         ...context.repo.owner,
-        ...context.repo
+        ...context.repo,
+        state: 'open'
       }
     )
     core.setOutput('code-scanning-alert-count', codeql.length)
@@ -29895,7 +29897,8 @@ async function run() {
       octokit.rest.secretScanning.listAlertsForRepo,
       {
         ...context.repo.owner,
-        ...context.repo
+        ...context.repo,
+        state: 'open'
       }
     )
     core.setOutput('secret-scanning-alert-count', secrets.length)
