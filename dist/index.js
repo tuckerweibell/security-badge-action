@@ -29871,7 +29871,7 @@ const chroma = __nccwpck_require__(6437)
  */
 async function run() {
   try {
-    const color_scale = chroma.scale(['#00e604', 'yellow', 'red'])
+    const color_scale = chroma.scale(['#00e604', '#e6d300', '#c90404'])
     const token = core.getInput('token')
     const dependabotMinimum = core.getInput('dependabot-minimum')
     const dependabotMaximum = core.getInput('dependabot-maximum')
