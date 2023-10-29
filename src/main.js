@@ -101,10 +101,9 @@ async function run() {
     if (dependabotEnabled) {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
-        description: 'An updated gist description',
         files: {
-          'README.md': {
-            content: 'Hello World from GitHub'
+          dependabotFileName: {
+            content: 'Hello World!!! from GitHub'
           }
         },
         headers: {
