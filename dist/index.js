@@ -29965,8 +29965,8 @@ async function run() {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
-          dependabotFileName: {
-            content: 'Hello World!!! from GitHub'
+          [dependabotFileName]: {
+            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","logo":"github","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
           }
         },
         headers: {
@@ -29976,23 +29976,29 @@ async function run() {
     }
 
     if (codeScanningEnabled) {
-      octokit.rest.gists.update({
-        gistID,
+      await octokit.request('PATCH /gists/{gist_id}', {
+        gist_id: gistID,
         files: {
-          codeScanningFileName: {
+          [codeScanningFileName]: {
             content: `{"label":"${codeScanningBadgeName}","message":"${codeql.length}","logo":"github","schemaVersion":1,"color":"${codeScanningColor}","cacheSeconds":${cacheSeconds}}`
           }
+        },
+        headers: {
+          'X-GitHub-Api-Version': '2022-11-28'
         }
       })
     }
 
     if (secretScanningEnabled) {
-      octokit.rest.gists.update({
-        gistID,
+      await octokit.request('PATCH /gists/{gist_id}', {
+        gist_id: gistID,
         files: {
-          secretScanningFileName: {
+          [secretScanningFileName]: {
             content: `{"label":"${secretScanningBadgeName}","message":"${secrets.length}","logo":"github","schemaVersion":1,"color":"${secretScanningColor}","cacheSeconds":${cacheSeconds}}`
           }
+        },
+        headers: {
+          'X-GitHub-Api-Version': '2022-11-28'
         }
       })
     }
