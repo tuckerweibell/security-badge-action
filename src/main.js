@@ -103,7 +103,7 @@ async function run() {
         gist_id: gistID,
         files: {
           [dependabotFileName]: {
-            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","namedLogo":"github","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
+            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","namedLogo":"dependabot","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
           }
         },
         headers: {
