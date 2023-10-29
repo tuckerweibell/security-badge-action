@@ -29962,12 +29962,16 @@ async function run() {
       .replace('#', '')
 
     if (dependabotEnabled) {
-      octokit.rest.gists.update({
-        gistID,
+      await octokit.request('PATCH /gists/{gist_id}', {
+        gist_id: gistID,
+        description: 'An updated gist description',
         files: {
-          dependabotFileName: {
-            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","logo":"dependabot","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
+          'README.md': {
+            content: 'Hello World from GitHub'
           }
+        },
+        headers: {
+          'X-GitHub-Api-Version': '2022-11-28'
         }
       })
     }
