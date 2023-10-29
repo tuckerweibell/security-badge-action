@@ -70,7 +70,7 @@ async function run() {
     // Calculate color grade based on min-max range for applicable bagdes
 
     // Generate color scale green, yellow, red (feel free to add additional scales)
-    const green_yellow_red = chroma.scale(['#00e604', '#e6d300', '#c90404'])
+    const green_yellow_red = chroma.scale(['#02a10a', '#e6d300', '#c90404'])
 
     // Calulate value on color scale for dependabot badge
     const dependabotScaleVal =
