@@ -50,7 +50,7 @@ inputs:
     description: 'Maximum allowed secret scanning alerts'
     required: false
     default: 'Secret Scanning'
-  code-scanning-enabled:
+  secret-scanning-enabled:
     description: 'Enable or disable secret scanning badge updates'
     required: false
     default: true
