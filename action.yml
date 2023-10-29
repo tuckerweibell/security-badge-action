@@ -2,10 +2,9 @@ name: 'Security Badge Action'
 description: 'Generates security badges for repository'
 author: 'Tucker Weibell'
 
-# Define your inputs here.
 inputs:
   token:
-    description: 'Github API token'
+    description: 'Github PAT token'
     required: true
   dependabot-minimum:
     description: 'Minimum allowed dependabot alerts'
@@ -14,24 +13,66 @@ inputs:
   dependabot-maximum:
     description: 'Maximum allowed dependabot alerts'
     required: false
-    default: 0
+    default: 10
   dependabot-badge-name:
     description: 'Maximum allowed dependabot alerts'
     required: false
+    default: 'Dependabot'
+  dependabot-enabled:
+    description: 'Enable or disable dependabot badge updates'
+    required: false
+    default: true
+  code-scanning-minimum:
+    description: 'Minimum allowed code scanning alerts'
+    required: false
     default: 0
-
-# Define your outputs here.
-outputs:
-  dependabot-alert-count:
-    description: 'Number of dependabot alerts'
-  code-scanning-alert-count:
-    description: 'Number of code scanning alerts'
-  secret-scanning-alert-count:
-    description: 'Number of secret scanning alerts'
-  dependabot-svg-url:
-    description: 'Url badge generated for dependabot'
-
-
+  code-scanning-maximum:
+    description: 'Maximum allowed code scanning alerts'
+    required: false
+    default: 5
+  code-scanning-badge-name:
+    description: 'Maximum allowed code scanning alerts'
+    required: false
+    default: 'Code Scanning'
+  code-scanning-enabled:
+    description: 'Enable or disable code scanning badge updates'
+    required: false
+    default: true
+  secret-scanning-minimum:
+    description: 'Minimum allowed secret scanning alerts'
+    required: false
+    default: 0
+  secret-scanning-maximum:
+    description: 'Maximum allowed secret scanning alerts'
+    required: false
+    default: 1
+  secret-scanning-badge-name:
+    description: 'Maximum allowed secret scanning alerts'
+    required: false
+    default: 'Secret Scanning'
+  code-scanning-enabled:
+    description: 'Enable or disable secret scanning badge updates'
+    required: false
+    default: true
+  gist-id:
+    description: 'ID of gist you created'
+    required: true
+  dependabot-filename:
+    description: 'Filename for dependabot badge json'
+    required: false
+    default: 'dependabot.json'
+  code-scanning-filename:
+    description: 'Filename for code scanning badge json'
+    required: false
+    default: 'code-scanning.json'
+  secret-scanning-filename:
+    description: 'Filename for secret scanning badge json'
+    required: false
+    default: 'secret-scanning.json'
+  cache-seconds:
+    description: 'How long shields.io should cache image for (min 300 seconds)'
+    required: false
+    default: 300
 
 runs:
   using: node20
