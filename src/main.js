@@ -103,7 +103,7 @@ async function run() {
         gist_id: gistID,
         files: {
           [dependabotFileName]: {
-            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","logo":"github","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
+            content: `{"label":"${dependabotBadgeName}","message":"${dependabot.length}","namedLogo":"github","schemaVersion":1,"color":"${dependabotColor}","cacheSeconds":${cacheSeconds}}`
           }
         },
         headers: {
@@ -117,7 +117,7 @@ async function run() {
         gist_id: gistID,
         files: {
           [codeScanningFileName]: {
-            content: `{"label":"${codeScanningBadgeName}","message":"${codeql.length}","logo":"github","schemaVersion":1,"color":"${codeScanningColor}","cacheSeconds":${cacheSeconds}}`
+            content: `{"label":"${codeScanningBadgeName}","message":"${codeql.length}","namedLogo":"github","schemaVersion":1,"color":"${codeScanningColor}","cacheSeconds":${cacheSeconds}}`
           }
         },
         headers: {
@@ -131,7 +131,7 @@ async function run() {
         gist_id: gistID,
         files: {
           [secretScanningFileName]: {
-            content: `{"label":"${secretScanningBadgeName}","message":"${secrets.length}","logo":"github","schemaVersion":1,"color":"${secretScanningColor}","cacheSeconds":${cacheSeconds}}`
+            content: `{"label":"${secretScanningBadgeName}","message":"${secrets.length}","namedLogo":"github","schemaVersion":1,"color":"${secretScanningColor}","cacheSeconds":${cacheSeconds}}`
           }
         },
         headers: {
