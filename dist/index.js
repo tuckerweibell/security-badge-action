@@ -29961,7 +29961,7 @@ async function run() {
       .hex()
       .replace('#', '')
 
-    if (dependabotEnabled) {
+    if (dependabotEnabled === 'true') {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
@@ -29975,7 +29975,7 @@ async function run() {
       })
     }
 
-    if (codeScanningEnabled) {
+    if (codeScanningEnabled === 'true') {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
@@ -29989,7 +29989,7 @@ async function run() {
       })
     }
 
-    if (secretScanningEnabled) {
+    if (secretScanningEnabled === 'true') {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
