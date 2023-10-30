@@ -29888,19 +29888,15 @@ async function run() {
     const secretScanningMaximum = core.getInput('secret-scanning-maximum')
     const secretScanningBadgeName = core.getInput('secret-scanning-badge-name')
 
-    const dependabotEnabled = core.getInput('dependabot-enabled')
-    const codeScanningEnabled = core.getInput('code-scanning-enabled')
-    const secretScanningEnabled = core.getInput('secret-scanning-enabled')
+    const enabledBadges = core
+      .getInput('enabled-badges')
+      .replace(/\s/g, '')
+      .split(',')
+      .map(word => word.toLowerCase())
 
     const dependabotFileName = core.getInput('dependabot-filename')
     const codeScanningFileName = core.getInput('code-scanning-filename')
     const secretScanningFileName = core.getInput('secret-scanning-filename')
-
-    const test = core.getInput('test').replace(/\s/g, '').split(',')
-
-    core.setOutput('test-one', test[0])
-    core.setOutput('test-two', test[1])
-    core.setOutput('test-three', test[2])
 
     // Retrieve required values to generate and use oktokit
     const context = github.context
@@ -29967,7 +29963,7 @@ async function run() {
       .hex()
       .replace('#', '')
 
-    if (dependabotEnabled === 'true') {
+    if (enabledBadges.includes('dependabot')) {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
@@ -29981,7 +29977,7 @@ async function run() {
       })
     }
 
-    if (codeScanningEnabled === 'true') {
+    if (enabledBadges.includes('code-scanning')) {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {
@@ -29995,7 +29991,7 @@ async function run() {
       })
     }
 
-    if (secretScanningEnabled === 'true') {
+    if (enabledBadges.includes('secret-scanning')) {
       await octokit.request('PATCH /gists/{gist_id}', {
         gist_id: gistID,
         files: {

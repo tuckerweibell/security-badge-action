@@ -18,10 +18,6 @@ inputs:
     description: 'Maximum allowed dependabot alerts'
     required: false
     default: 'Dependabot'
-  dependabot-enabled:
-    description: 'Enable or disable dependabot badge updates'
-    required: false
-    default: true
   code-scanning-minimum:
     description: 'Minimum allowed code scanning alerts'
     required: false
@@ -34,10 +30,6 @@ inputs:
     description: 'Maximum allowed code scanning alerts'
     required: false
     default: 'Code Scanning'
-  code-scanning-enabled:
-    description: 'Enable or disable code scanning badge updates'
-    required: false
-    default: true
   secret-scanning-minimum:
     description: 'Minimum allowed secret scanning alerts'
     required: false
@@ -50,10 +42,6 @@ inputs:
     description: 'Maximum allowed secret scanning alerts'
     required: false
     default: 'Secret Scanning'
-  secret-scanning-enabled:
-    description: 'Enable or disable secret scanning badge updates'
-    required: false
-    default: true
   gist-id:
     description: 'ID of gist you created'
     required: true
@@ -73,16 +61,10 @@ inputs:
     description: 'How long shields.io should cache image for (min 300 seconds)'
     required: false
     default: 300
-  test:
-    description: 'a test'
-
-outputs:
-  test-one:
-    description: 'test1'
-  test-two:
-    description: 'test2'
-  test-three:
-    description: 'test3'
+  enabled-badges:
+    description: 'Defines which badges should be enabled'
+    required: false
+    default: depedabot, code-scanning, secret-scanning
 
 runs:
   using: node20
