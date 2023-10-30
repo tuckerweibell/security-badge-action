@@ -29891,7 +29891,7 @@ async function run() {
     const enabledBadges = core
       .getInput('enabled-badges')
       .replace(/\s/g, '')
-      .split(/\r?\n/)
+      .split('\n')
       .map(word => word.toLowerCase())
 
     const dependabotFileName = core.getInput('dependabot-filename')
