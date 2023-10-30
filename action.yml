@@ -73,6 +73,8 @@ inputs:
     description: 'How long shields.io should cache image for (min 300 seconds)'
     required: false
     default: 300
+  test:
+    description: 'a test'
 
 outputs:
   test-one:
