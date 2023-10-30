@@ -29896,6 +29896,12 @@ async function run() {
     const codeScanningFileName = core.getInput('code-scanning-filename')
     const secretScanningFileName = core.getInput('secret-scanning-filename')
 
+    const test = core.getInput('test').replace(/\s/g, '').split(',')
+
+    core.setOutput('test-one', test[0])
+    core.setOutput('test-two', test[1])
+    core.setOutput('test-three', test[2])
+
     // Retrieve required values to generate and use oktokit
     const context = github.context
     const octokit = github.getOctokit(token)

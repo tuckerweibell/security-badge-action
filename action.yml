@@ -74,6 +74,14 @@ inputs:
     required: false
     default: 300
 
+outputs:
+  test-one:
+    description: 'test1'
+  test-two:
+    description: 'test2'
+  test-three:
+    description: 'test3'
+
 runs:
   using: node20
   main: dist/index.js
