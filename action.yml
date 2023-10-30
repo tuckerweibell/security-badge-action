@@ -66,14 +66,6 @@ inputs:
     required: false
     default: depedabot, code-scanning, secret-scanning
 
-outputs:
-  one:
-    description: 'hhh'
-  two:
-    description: 'hhdfh'
-  three:
-    description: 'hhsdfh'
-
 runs:
   using: node20
   main: dist/index.js

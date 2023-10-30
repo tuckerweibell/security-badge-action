@@ -30,10 +30,6 @@ async function run() {
       .split('\n')
       .map(word => word.toLowerCase())
 
-    core.setOutput('one', enabledBadges[0])
-    core.setOutput('two', enabledBadges[1])
-    core.setOutput('three', enabledBadges[2])
-
     const dependabotFileName = core.getInput('dependabot-filename')
     const codeScanningFileName = core.getInput('code-scanning-filename')
     const secretScanningFileName = core.getInput('secret-scanning-filename')
