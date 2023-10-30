@@ -29890,7 +29890,6 @@ async function run() {
 
     const enabledBadges = core
       .getInput('enabled-badges')
-      .replace(/\s/g, '')
       .split('\n')
       .map(word => word.toLowerCase())
 
