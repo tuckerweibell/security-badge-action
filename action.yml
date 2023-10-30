@@ -66,6 +66,11 @@ inputs:
     required: false
     default: depedabot, code-scanning, secret-scanning
 
+outputs:
+  one:
+  two:
+  three:
+
 runs:
   using: node20
   main: dist/index.js
