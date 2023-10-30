@@ -68,8 +68,11 @@ inputs:
 
 outputs:
   one:
+    description: 'hhh'
   two:
+    description: 'hhdfh'
   three:
+    description: 'hhsdfh'
 
 runs:
   using: node20
